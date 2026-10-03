@@ -49,9 +49,9 @@ function ProductPage() {
     );
 
   const addToCart = (go: boolean) => {
-    if (p.sizes.length && !size) return toast.error("Pick a size");
+    if (p.sizes.length && !size) { toast.error("Pick a size"); return; }
     add({
-      productId: p.id, name: p.name, image: p.images[0], size, color, qty,
+      productId: p.id, name: p.name, image: p.images[0] ?? "", size, color, qty,
       minQty: p.min_order_qty, priceNgn: Number(p.price_ngn), priceUsd: Number(p.price_usd),
     });
     toast.success("Added to cart");
